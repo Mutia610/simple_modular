@@ -1,0 +1,8 @@
+rootProject.name = "simple_modular"
+include ':app'
+include ':core:base'
+include ':core:local'
+include ':core:remote'
+include ':core:navigator'
+include ':core:uiComponents'
+include ':feature:home'

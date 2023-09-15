@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: '..\\..\\android_library_config.gradle'
+
+dependencies {
+    implementation project(Modules.BASE)
+    implementation project(Modules.LOCAL)
+
+    implementation Dependencies.stdlib
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitCoroutine
+    implementation Dependencies.retrofitGsonConverter
+    implementation Dependencies.alibabaSdk
+    implementation Dependencies.gson
+    implementation Dependencies.moshi
+    implementation Dependencies.timber
+
+    implementation Dependencies.coroutinesAndroid
+    implementation Dependencies.coroutinesCore
+    implementation Dependencies.coroutinesPlayService
+
+    implementation Dependencies.okhttp
+    implementation Dependencies.okhttpLogging
+
+    implementation platform(Dependencies.firebaseBom)
+    implementation Dependencies.firebase
+
+    implementation Dependencies.hiltAndroid
+    kapt Dependencies.hiltAndroidCompiler
+}

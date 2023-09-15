@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk Config.androidCompileSdkVersion
+
+    defaultConfig {
+        applicationId Config.applicationId
+        minSdk  Config.androidMinSdkVersion
+        targetSdk Config.androidTargetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
+
+        testInstrumentationRunner Config.testInstrumentationRunner
+        consumerProguardFiles Config.proguardFiles
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            buildConfigField "int", "SERVER_STAGING", "1"
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility Config.javaVersion
+        targetCompatibility Config.javaVersion
+    }
+    kotlinOptions {
+        jvmTarget = Config.jvmTarget
+    }
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+        exclude("META-INF/*.kotlin_module")
+    }
+    ndkVersion '25.0.8775105'
+    dynamicFeatures = [':feature:home']
+}
+
+dependencies {
+    implementation project(Modules.REMOTE)
+    implementation project(Modules.LOCAL)
+    implementation project(Modules.NAVIGATOR)
+    implementation project(Modules.BASE)
+    implementation project(Modules.UI_COMPONENTS)
+
+    implementation Dependencies.stdlib
+    implementation Dependencies.activityKtx
+    implementation Dependencies.appcompat
+    implementation Dependencies.constraintLayout
+    implementation Dependencies.material
+    implementation Dependencies.multidex
+    implementation Dependencies.retrofit
+    implementation Dependencies.timber
+    implementation Dependencies.gson
+    implementation Dependencies.imageCropper
+    implementation Dependencies.glide
+
+    implementation Dependencies.lifecycleLiveData
+    implementation Dependencies.lifecycleRuntime
+    implementation Dependencies.lifecycleViewModel
+
+//    implementation platform(Dependencies.firebaseBom)
+//    implementation Dependencies.firebase
+
+    implementation Dependencies.hiltAndroid
+    kapt Dependencies.hiltAndroidCompiler
+
+//    testImplementation 'junit:junit:4.13.2'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

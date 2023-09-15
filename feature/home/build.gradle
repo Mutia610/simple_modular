@@ -1,0 +1,51 @@
+plugins {
+    id 'com.android.dynamic-feature'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: '..\\..\\android_library_config.gradle'
+
+dependencies {
+    implementation project(Modules.APP)
+    implementation project(Modules.BASE)
+    implementation project(Modules.LOCAL)
+    implementation project(Modules.REMOTE)
+    implementation project(Modules.UI_COMPONENTS)
+    implementation project(Modules.NAVIGATOR)
+
+    implementation Dependencies.stdlib
+    implementation Dependencies.appcompat
+    implementation Dependencies.activityKtx
+    implementation Dependencies.fragmentKtx
+    implementation Dependencies.constraintLayout
+    implementation Dependencies.material
+    implementation Dependencies.retrofit
+    implementation Dependencies.securePref
+    implementation Dependencies.gson
+    implementation Dependencies.coroutinesAndroid
+    implementation Dependencies.coroutinesCore
+    implementation Dependencies.timber
+
+    implementation Dependencies.okhttp
+    implementation Dependencies.supportV4
+
+    implementation Dependencies.lifecycleLiveData
+    implementation Dependencies.lifecycleRuntime
+    implementation Dependencies.lifecycleViewModel
+
+    implementation Dependencies.intuitSdp
+    implementation Dependencies.intuitSsp
+
+    implementation Dependencies.navFragment
+    implementation Dependencies.navUi
+
+    implementation Dependencies.glide
+    kapt Dependencies.glideCompiler
+
+    implementation Dependencies.spinKitView
+
+    implementation Dependencies.hiltAndroid
+    kapt Dependencies.hiltAndroidCompiler
+}

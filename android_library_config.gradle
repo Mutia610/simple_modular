@@ -1,0 +1,47 @@
+android {
+    compileSdkVersion Config.androidCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion Config.androidMinSdkVersion
+        targetSdkVersion Config.androidTargetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
+
+        testInstrumentationRunner Config.testInstrumentationRunner
+        consumerProguardFiles Config.proguardFiles
+        // multiDexEnabled true
+    }
+
+    android {
+        buildFeatures {
+            viewBinding true
+            dataBinding true
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "int", "SERVER_STAGING", "1"
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            buildConfigField "int", "SERVER_STAGING", "2"
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility Config.javaVersion
+        targetCompatibility Config.javaVersion
+    }
+    kotlinOptions {
+        jvmTarget = Config.jvmTarget
+    }
+    //Adds the common UI test files from the Base module to include it in all other modules
+    sourceSets {
+        androidTest.java.srcDirs += ["${project(Modules.BASE).projectDir}/src/androidTest/java"]
+    }
+    ndkVersion '25.0.8775105'
+}

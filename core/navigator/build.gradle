@@ -1,0 +1,28 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: '..\\..\\android_library_config.gradle'
+
+dependencies {
+    implementation project(Modules.BASE)
+    implementation project(Modules.UI_COMPONENTS)
+
+    implementation Dependencies.stdlib
+    implementation Dependencies.activityKtx
+    implementation Dependencies.appcompat
+    implementation Dependencies.material
+    implementation Dependencies.appcompat
+    implementation Dependencies.constraintLayout
+    implementation Dependencies.timber
+
+    implementation Dependencies.navFragment
+    implementation Dependencies.navUi
+    implementation Dependencies.navDynamicFeaturesFragment
+
+    implementation Dependencies.hiltAndroid
+    kapt Dependencies.hiltAndroidCompiler
+}

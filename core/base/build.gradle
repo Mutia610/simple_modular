@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: '..\\..\\android_library_config.gradle'
+
+android {
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+}
+
+dependencies {
+
+    implementation Dependencies.stdlib
+    implementation Dependencies.appcompat
+    implementation Dependencies.material
+    implementation Dependencies.retrofit
+    implementation Dependencies.securePref
+    implementation Dependencies.alibabaSdk
+    implementation Dependencies.gson
+    implementation Dependencies.timber
+
+    implementation Dependencies.okhttp
+    implementation Dependencies.okhttpLogging
+
+    implementation Dependencies.hiltAndroid
+    kapt Dependencies.hiltAndroidCompiler
+}

@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: '..\\..\\android_library_config.gradle'
+
+android {
+    namespace 'com.mutia.uicomponents'
+}
+
+dependencies {
+    implementation project(Modules.BASE)
+    implementation project(Modules.REMOTE)
+
+    implementation Dependencies.stdlib
+    implementation Dependencies.appcompat
+    implementation Dependencies.securePref
+
+    implementation Dependencies.recycleView
+    implementation Dependencies.viewPager2
+    implementation Dependencies.material
+
+    implementation Dependencies.timber
+    implementation Dependencies.glide
+
+    implementation Dependencies.intuitSdp
+    implementation Dependencies.intuitSsp
+
+    implementation platform(Dependencies.firebaseBom)
+    implementation Dependencies.firebase
+
+    implementation Dependencies.hiltAndroid
+    kapt Dependencies.hiltAndroidCompiler
+}
